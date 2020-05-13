@@ -30,11 +30,20 @@ export const substract = (value) => {
         val: value
     };
 };
-
-export const storeResult = (res) => {
+//Synchronous Functions action dispatch after 2s and may edit the store
+export const saveResult = (res) => {
     return {
         type: STORE_RESULT,
         result: res
+    };
+};
+//Example SetTimeout 
+//Asynchronous Functions are only possible with Redux Thunk in the middleware
+export const storeResult = (res) => {
+    return dispatch => {
+        setTimeout(() => {
+            dispatch(saveResult(res));
+        }, 2000);
     };
 };
 
