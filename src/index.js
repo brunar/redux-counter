@@ -25,8 +25,11 @@ const logger = store => {
         }
     }
 }
+//Import compose from redux at the top
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
-//Adding ApplyMiddleware as 2nd Argument so-called enhancer
+
+//Passing ApplyMiddleware as function into the enhancer, composeEnhancers 
+//And Adding Thunk as a 2nd argument to the applyMiddleware()
 const store = createStore(
     rootReducer, composeEnhancers(applyMiddleware(logger, thunk)));
 

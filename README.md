@@ -12,7 +12,7 @@ yarn add redux react-redux
 5. create mapDispatchToProps and
 6. mapStateToProps
 
-### Import and connect Actions
+### 7. Import and connect Actions
 ```jsx
 import { connect } from 'react-redux';
 
@@ -34,10 +34,13 @@ const mapDispatchToProps = dispatch => {
 export default connect(mapStateToProps, mapDispatchToProps)(Counter);
 
 ```
-### And Passing the state by props
+### 8. Passing the state by props
 Then change the {this.state.something} to {this.props.ctr} - name props from mapStateToProps for state or mapDispatchToProps for actions
 
 # Redux Advanced
+```jsx
+import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
+```
 ## Middleware
 ```jsx
 //Adding Middleware
@@ -61,7 +64,7 @@ const logger = store => {
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 ```
 
-### Adding ApplyMiddleware and as 2nd Argument the enhancer, composeEnhancers
+### Passing ApplyMiddleware as function into the enhancer, composeEnhancers
 ```jsx
 const store = createStore(
     rootReducer, composeEnhancers(applyMiddleware(logger)));
